@@ -6,6 +6,7 @@ require (
 	github.com/electricbubble/gadb v0.1.0
 	github.com/spf13/viper v1.20.1
 	github.com/wailsapp/wails/v2 v2.10.1
+	gocv.io/x/gocv v0.41.0
 )
 
 require (

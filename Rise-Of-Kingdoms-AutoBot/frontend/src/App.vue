@@ -1,22 +1,31 @@
 <template>
-  <DeviceManager />
+  <div class="p-4">
+    <button @click="loadScreenshot" class="bg-blue-500 text-white px-4 py-2 rounded">
+      Xem ảnh Screenshot
+    </button>
+
+    <HomeView
+      v-if="imageSrc"
+      :image-src="imageSrc"
+      :original-width="1280"
+      :original-height="720"
+    />
+  </div>
 </template>
 
 <script setup>
-import DeviceManager from './components/DeviceManager.vue'
-</script>
+import HomeView from './components/HomeView.vue'
+import { ref } from 'vue'
 
-<style>
-/* Optional: add global styles here */
-#logo {
-  display: block;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  padding: 10% 0 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-origin: content-box;
+const imageSrc = ref(null)
+
+function loadScreenshot() {
+  window.go.main.App.Screenshot().then((data) => {
+    if (data) {
+      imageSrc.value = data
+    } else {
+      alert("Không thể tải ảnh.")
+    }
+  })
 }
-</style>
+</script>

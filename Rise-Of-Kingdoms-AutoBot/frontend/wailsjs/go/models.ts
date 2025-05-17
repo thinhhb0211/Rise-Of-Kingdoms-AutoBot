@@ -23,24 +23,3 @@ export namespace config {
 
 }
 
-export namespace main {
-	
-	export class Device {
-	    name: string;
-	    ip: string;
-	    port: string;
-	
-	    static createFrom(source: any = {}) {
-	        return new Device(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.name = source["name"];
-	        this.ip = source["ip"];
-	        this.port = source["port"];
-	    }
-	}
-
-}
-
